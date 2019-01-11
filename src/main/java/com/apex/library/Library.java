@@ -1,6 +1,7 @@
 package com.apex.library;
 
 import com.apex.library.command.CommandLibAdmin;
+import com.apex.library.exec.CheckBookRunnable;
 import com.apex.library.gui.BookshelfGUI;
 import com.apex.library.listeners.BlockListener;
 import com.apex.library.listeners.PlayerListener;
@@ -21,9 +22,17 @@ public class Library extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
+
+        bookManager = new BookManager();
+
+        bookManager.loadBooks();
+
         registerEvents();
 
         getCommand("libadmin").setExecutor(new CommandLibAdmin());
+
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new CheckBookRunnable(), 0L, 20L); //check every 1 sec
     }
 
 

@@ -1,5 +1,6 @@
 package com.apex.library.datatypes;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Location;
@@ -9,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.UUID;
 
 @Getter
+@AllArgsConstructor
 public class Book {
     UUID uuid;
     int price;
